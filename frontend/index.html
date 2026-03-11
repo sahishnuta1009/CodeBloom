@@ -137,18 +137,19 @@
       alert("Subscribed! Welcome to CodeBloom.");
     }
     async function sendMessage() {
-  const name = document.getElementById("contact-name").value;
+   const name = document.getElementById("contact-name").value;
   const email = document.getElementById("contact-email").value;
   const message = document.getElementById("contact-message").value;
   if (!name || !email || !message) return alert("Please fill all fields");
 
-  await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+  const res = await fetch("https://formspree.io/f/xaqpoapy", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, email, message })
   });
 
-  alert("Message sent! I'll get back to you soon.");
+  if (res.ok) alert("Message sent! I'll get back to you soon.");
+  else alert("Something went wrong. Try again.");
 }
   </script>
 </body>
