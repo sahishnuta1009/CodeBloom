@@ -34,7 +34,7 @@
     </div>
   </div>
   <script>
-    const API = "https://codebloom-backend-ljhm.onrender.com/";
+    const API = "https://codebloom-backend-ljhm.onrender.com";
     if (localStorage.getItem("token")) window.location = "dashboard.html";
     async function login() {
       const email = document.getElementById("email").value.trim();
@@ -42,7 +42,7 @@
       const msg = document.getElementById("auth-message");
       if (!email || !password) { msg.innerHTML = '<p class="error-msg">Please fill all fields</p>'; return; }
       try {
-        const res = await fetch(API + "/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, password }) });
+        const res = await fetch(API + "/api/auth/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, password }) });
         const data = await res.json();
         if (res.ok) {
           localStorage.setItem("token", data.token);

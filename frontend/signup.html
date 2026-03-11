@@ -36,7 +36,7 @@
     </div>
   </div>
   <script>
-    const API = "https://codebloom-backend-ljhm.onrender.com/";
+    const API = "https://codebloom-backend-ljhm.onrender.com";
     async function signup() {
       const username = document.getElementById("username").value.trim();
       const email = document.getElementById("email").value.trim();
@@ -47,7 +47,7 @@
       if (password !== confirmPassword) { msg.innerHTML = '<p class="error-msg">Passwords do not match</p>'; return; }
       if (password.length < 6) { msg.innerHTML = '<p class="error-msg">Password must be at least 6 characters</p>'; return; }
       try {
-        const res = await fetch(API + "/signup", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, email, password }) });
+        const res = await fetch(API + "/api/auth/signup", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, email, password }) });
         const data = await res.json();
         if (res.ok) { msg.innerHTML = '<p class="success-msg">Account created! Redirecting...</p>'; setTimeout(() => window.location = "login.html", 1500); }
         else { msg.innerHTML = `<p class="error-msg">${data.error}</p>`; }
