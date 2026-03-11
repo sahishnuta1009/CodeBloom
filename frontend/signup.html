@@ -1,0 +1,57 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — CodeBloom</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:8px">CodeBloom <span class="nav-logo-dot"></span></a></div>
+    <div class="nav-links"><a href="login.html">Already have an account? Login</a></div>
+  </nav>
+  <div class="auth-page">
+    <div class="auth-left">
+      <h1>Start your coding journey</h1>
+      <p>Track your streak. Solve problems. Build consistency. Join CodeBloom today.</p>
+      <div class="auth-features">
+        <div class="auth-feature"><div class="auth-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>Daily coding streaks</div>
+        <div class="auth-feature"><div class="auth-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>VS Code style editor</div>
+        <div class="auth-feature"><div class="auth-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>Problem solving notebook</div>
+        <div class="auth-feature"><div class="auth-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>Rewards and badges</div>
+      </div>
+    </div>
+    <div class="auth-card">
+      <h2>Create Account</h2>
+      <p class="auth-subtitle">Join thousands of developers building daily habits</p>
+      <div class="form-group"><label>Username</label><input type="text" id="username" placeholder="e.g. sohi_codes"></div>
+      <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="sohi@gmail.com"></div>
+      <div class="form-group"><label>Password</label><input type="password" id="password" placeholder="Min 6 characters"></div>
+      <div class="form-group"><label>Confirm Password</label><input type="password" id="confirmPassword" placeholder="Repeat password"></div>
+      <button class="auth-btn" onclick="signup()">Create Account</button>
+      <p class="auth-switch">Already have an account? <a href="login.html">Login here</a></p>
+      <div id="auth-message"></div>
+    </div>
+  </div>
+  <script>
+    const API = "http://localhost:5000/api/auth";
+    async function signup() {
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const msg = document.getElementById("auth-message");
+      if (!username || !email || !password || !confirmPassword) { msg.innerHTML = '<p class="error-msg">Please fill all fields</p>'; return; }
+      if (password !== confirmPassword) { msg.innerHTML = '<p class="error-msg">Passwords do not match</p>'; return; }
+      if (password.length < 6) { msg.innerHTML = '<p class="error-msg">Password must be at least 6 characters</p>'; return; }
+      try {
+        const res = await fetch(API + "/signup", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, email, password }) });
+        const data = await res.json();
+        if (res.ok) { msg.innerHTML = '<p class="success-msg">Account created! Redirecting...</p>'; setTimeout(() => window.location = "login.html", 1500); }
+        else { msg.innerHTML = `<p class="error-msg">${data.error}</p>`; }
+      } catch (err) { msg.innerHTML = '<p class="error-msg">Cannot connect to server. Is it running?</p>'; }
+    }
+  </script>
+</body></html>

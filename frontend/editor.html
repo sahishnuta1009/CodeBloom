@@ -1,0 +1,199 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor — CodeBloom</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">CodeBloom <span class="sidebar-logo-dot"></span></div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Menu</div>
+        <a href="dashboard.html" class="nav-item ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="editor.html" class="nav-item active">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Editor
+        </a>
+        <a href="notebook.html" class="nav-item ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Notebook
+        </a>
+        <a href="streak.html" class="nav-item ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Streak
+        </a>
+        <a href="rewards.html" class="nav-item ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          Rewards
+        </a>
+        <a href="settings.html" class="nav-item ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </a>
+      </nav>
+      <button class="logout-btn" onclick="logout()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Logout
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <div class="topbar">
+        <div><h1 class="topbar-title">Code Editor</h1><p class="topbar-sub">Write meaningful code to grow your streak</p></div>
+        <div class="topbar-right">
+          <div class="streak-badge"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> <span id="streak-count">0</span> day streak</div>
+          <div class="avatar" id="avatar-display">S</div>
+        </div>
+      </div>
+      <div class="editor-toolbar">
+        <div class="toolbar-left">
+          <select id="language-select" onchange="changeLanguage()"><option value="javascript">JavaScript</option><option value="python">Python</option><option value="java">Java</option><option value="cpp">C++</option><option value="typescript">TypeScript</option></select>
+          <select id="theme-select" onchange="changeTheme()"><option value="vs-dark">Dark Theme</option><option value="vs">Light Theme</option><option value="hc-black">High Contrast</option></select>
+          <div class="line-counter">Lines: <span id="line-count">0</span> <span id="line-status" class="line-status-low">Need 200 for streak</span></div>
+        </div>
+        <div class="toolbar-right">
+          <button class="btn-run" onclick="runCode()"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Run</button>
+          <button class="btn-save" onclick="saveSession()"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Save Session</button>
+        </div>
+      </div>
+      <div class="editor-container">
+        <div class="editor-sidebar-panel">
+          <div class="file-explorer-title">Files</div>
+          <div class="file-item active" onclick="setFile(this)"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> solution.js</div>
+          <div class="file-item" onclick="setFile(this)"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> notes.md</div>
+          <div class="file-item" onclick="setFile(this)"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> scratch.js</div>
+        </div>
+        <div class="editor-main"><div id="monaco-editor"></div></div>
+      </div>
+      <div class="output-panel">
+        <div class="output-title"><span>Output</span><button onclick="clearOutput()" class="clear-btn">Clear</button></div>
+        <div id="output-content" class="output-content"><span class="output-placeholder">Run your code to see output here...</span></div>
+      </div>
+      <div class="streak-progress-card">
+        <div class="streak-progress-header"><h3>Today's Progress</h3><span id="progress-percent">0%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-bar" style="width:0%"></div></div>
+        <p class="progress-label">Write at least <strong>200 meaningful lines</strong> to earn your streak today</p>
+      </div>
+    </main>
+  </div>
+  <div id="save-modal" class="modal-overlay" style="display:none">
+    <div class="modal-card"><h2>Save Session</h2><p id="modal-message"></p><div id="modal-streak-info"></div><button class="auth-btn" onclick="closeModal()">OK</button></div>
+  </div>
+  <script src="https://unpkg.com/monaco-editor@0.44.0/min/vs/loader.js"></script>
+  <script>
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!token || !user) window.location = "login.html";
+    document.getElementById("avatar-display").textContent = user.username.charAt(0).toUpperCase();
+    document.getElementById("streak-count").textContent = user.streak || 0;
+    let editor, currentLanguage = "javascript";
+    const defaultCode = {
+      javascript: `// Welcome to CodeBloom\n// Write at least 200 meaningful lines to earn your streak!\n\nfunction twoSum(nums, target) {\n    const seen = {};\n    for (let i = 0; i < nums.length; i++) {\n        const diff = target - nums[i];\n        if (seen.hasOwnProperty(diff)) return [seen[diff], i];\n        seen[nums[i]] = i;\n    }\n    return [];\n}\nconsole.log(twoSum([2,7,11,15], 9));`,
+      python: `# Welcome to CodeBloom\ndef two_sum(nums, target):\n    seen = {}\n    for i, num in enumerate(nums):\n        diff = target - num\n        if diff in seen:\n            return [seen[diff], i]\n        seen[num] = i\nprint(two_sum([2,7,11,15], 9))`,
+      java: `// Welcome to CodeBloom\nimport java.util.HashMap;\npublic class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        HashMap<Integer,Integer> seen = new HashMap<>();\n        for (int i=0;i<nums.length;i++) {\n            int diff = target-nums[i];\n            if (seen.containsKey(diff)) return new int[]{seen.get(diff),i};\n            seen.put(nums[i],i);\n        }\n        return new int[]{};\n    }\n}`,
+      cpp: `// Welcome to CodeBloom\n#include<iostream>\n#include<vector>\n#include<unordered_map>\nusing namespace std;\nvector<int> twoSum(vector<int>& nums, int target) {\n    unordered_map<int,int> seen;\n    for (int i=0;i<nums.size();i++) {\n        int diff=target-nums[i];\n        if (seen.count(diff)) return {seen[diff],i};\n        seen[nums[i]]=i;\n    }\n    return {};\n}`
+    };
+    require.config({ paths: { vs: "https://unpkg.com/monaco-editor@0.44.0/min/vs" } });
+    require(["vs/editor/editor.main"], function () {
+      editor = monaco.editor.create(document.getElementById("monaco-editor"), {
+        value: defaultCode.javascript, language: "javascript", theme: "vs-dark",
+        fontSize: 14, fontFamily: "JetBrains Mono, monospace",
+        minimap: { enabled: true }, lineNumbers: "on", automaticLayout: true,
+        scrollBeyondLastLine: false, padding: { top: 16 }
+      });
+      editor.onDidChangeModelContent(() => updateLineCount());
+      updateLineCount();
+    });
+    function updateLineCount() {
+      if (!editor) return;
+      const lines = editor.getValue().split("\n").filter(l => l.trim() !== "");
+      const count = lines.length;
+      document.getElementById("line-count").textContent = count;
+      const pct = Math.min((count/200)*100,100);
+      document.getElementById("progress-bar").style.width = pct+"%";
+      document.getElementById("progress-percent").textContent = Math.floor(pct)+"%";
+      const st = document.getElementById("line-status");
+      if (count >= 200) { st.textContent = "Streak ready!"; st.className = "line-status-good"; document.getElementById("progress-bar").style.background = "var(--mint)"; }
+      else { st.textContent = `Need ${200-count} more`; st.className = "line-status-low"; document.getElementById("progress-bar").style.background = ""; }
+    }
+    function changeLanguage() {
+      currentLanguage = document.getElementById("language-select").value;
+      monaco.editor.setModelLanguage(editor.getModel(), currentLanguage === "cpp" ? "cpp" : currentLanguage);
+      editor.setValue(defaultCode[currentLanguage] || "// Start coding...");
+    }
+    function changeTheme() { monaco.editor.setTheme(document.getElementById("theme-select").value); }
+    function setFile(el) { document.querySelectorAll(".file-item").forEach(f=>f.classList.remove("active")); el.classList.add("active"); }
+    function runCode() {
+      const output = document.getElementById("output-content");
+      output.innerHTML = '<span style="color:#C084FC">Running...</span>';
+      setTimeout(() => {
+        try {
+          if (currentLanguage === "javascript") {
+            let result = "";
+            const orig = console.log;
+            console.log = (...a) => { result += a.join(" ")+"\n"; };
+            eval(editor.getValue());
+            console.log = orig;
+            output.innerHTML = `<span style="color:var(--mint)">${result || "Code ran successfully (no output)"}</span>`;
+          } else {
+            output.innerHTML = `<span style="color:#FCD34D">Live execution only supported for JavaScript in browser.</span>`;
+          }
+        } catch(err) { output.innerHTML = `<span style="color:var(--rose)">Error: ${err.message}</span>`; }
+      }, 300);
+    }
+    function clearOutput() { document.getElementById("output-content").innerHTML = '<span class="output-placeholder">Run your code to see output here...</span>'; }
+    function checkCodeFairness(code) {
+      const lines = code.split("\n").filter(l=>l.trim()!=="");
+      if (lines.length < 200) return { valid:false, reason:`Only ${lines.length} lines. Need 200.` };
+      const keywords = ["if","for","while","function","return","class","const","let","var","def","import","else","try","catch","switch","int","void","public","private","static","new"];
+      let kwCount = 0;
+      keywords.forEach(kw => { const m = code.toLowerCase().match(new RegExp(`\\b${kw}\\b`,"g")); if(m) kwCount+=m.length; });
+      if (kwCount < 10) return { valid:false, reason:"Not enough programming keywords. Write real code!" };
+      const charFreq = {};
+      for (let ch of code.replace(/\s/g,"")) charFreq[ch] = (charFreq[ch]||0)+1;
+      const total = Object.values(charFreq).reduce((a,b)=>a+b,0);
+      let entropy = 0;
+      for (let f of Object.values(charFreq)) { const p=f/total; entropy -= p*Math.log2(p); }
+      if (entropy < 3.5) return { valid:false, reason:"Code looks repetitive or random. Write meaningful code!" };
+      if (!/function|def |class |=>/i.test(code) && !/for|while/i.test(code)) return { valid:false, reason:"Code needs at least one function or loop." };
+      return { valid:true };
+    }
+    async function saveSession() {
+      const code = editor.getValue();
+      const fairness = checkCodeFairness(code);
+      const modal = document.getElementById("save-modal");
+      const modalMsg = document.getElementById("modal-message");
+      const modalStreak = document.getElementById("modal-streak-info");
+      if (!fairness.valid) { modalMsg.innerHTML = `<strong>Streak not earned</strong><br>${fairness.reason}`; modalStreak.innerHTML=""; modal.style.display="flex"; return; }
+      const today = new Date().toDateString();
+      if (localStorage.getItem("lastSaved_"+user.id) === today) { modalMsg.innerHTML = "You already earned your streak today! Come back tomorrow."; modalStreak.innerHTML=""; modal.style.display="flex"; return; }
+      user.streak = (user.streak||0)+1;
+      user.totalLines = (user.totalLines||0)+editor.getValue().split("\n").filter(l=>l.trim()).length;
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("lastSaved_"+user.id, today);
+      document.getElementById("streak-count").textContent = user.streak;
+      let newBadge = null;
+      if (user.streak===7) newBadge="Bronze — 7 Day Streak";
+      if (user.streak===30) newBadge="Silver — 30 Day Streak";
+      if (user.streak===100) newBadge="Gold — 100 Day Streak";
+      if (newBadge) { user.badges=user.badges||[]; user.badges.push(newBadge); localStorage.setItem("user",JSON.stringify(user)); }
+      modalMsg.innerHTML = `<strong>Streak earned!</strong><br>Your streak is now <strong>${user.streak} days</strong>!`;
+      modalStreak.innerHTML = newBadge ? `<div class="badge-item" style="margin-top:12px">New Badge: ${newBadge}</div>` : "";
+      modal.style.display="flex";
+    }
+    function closeModal() { document.getElementById("save-modal").style.display="none"; }
+
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location = "login.html";
+    }
+  </script>
+</body></html>

@@ -1,0 +1,56 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — CodeBloom</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:8px">CodeBloom <span class="nav-logo-dot"></span></a></div>
+    <div class="nav-links"><a href="signup.html">Don't have an account? Sign Up</a></div>
+  </nav>
+  <div class="auth-page">
+    <div class="auth-left">
+      <h1>Welcome back</h1>
+      <p>Your streak is waiting. Log in and keep your coding habit alive.</p>
+      <div class="auth-features">
+        <div class="auth-feature"><div class="auth-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>Check your current streak</div>
+        <div class="auth-feature"><div class="auth-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>Jump back into the editor</div>
+        <div class="auth-feature"><div class="auth-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>Review your notebook</div>
+        <div class="auth-feature"><div class="auth-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>Claim your rewards</div>
+      </div>
+    </div>
+    <div class="auth-card">
+      <h2>Login to CodeBloom</h2>
+      <p class="auth-subtitle">Good to see you again</p>
+      <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="sohi@gmail.com"></div>
+      <div class="form-group"><label>Password</label><input type="password" id="password" placeholder="Your password"></div>
+      <button class="auth-btn" onclick="login()">Login</button>
+      <p class="auth-switch">Don't have an account? <a href="signup.html">Sign up here</a></p>
+      <div id="auth-message"></div>
+    </div>
+  </div>
+  <script>
+    const API = "http://localhost:5000/api/auth";
+    if (localStorage.getItem("token")) window.location = "dashboard.html";
+    async function login() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const msg = document.getElementById("auth-message");
+      if (!email || !password) { msg.innerHTML = '<p class="error-msg">Please fill all fields</p>'; return; }
+      try {
+        const res = await fetch(API + "/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, password }) });
+        const data = await res.json();
+        if (res.ok) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          msg.innerHTML = '<p class="success-msg">Login successful! Redirecting...</p>';
+          setTimeout(() => window.location = "dashboard.html", 1500);
+        } else { msg.innerHTML = `<p class="error-msg">${data.error}</p>`; }
+      } catch (err) { msg.innerHTML = '<p class="error-msg">Cannot connect to server. Is it running?</p>'; }
+    }
+  </script>
+</body></html>

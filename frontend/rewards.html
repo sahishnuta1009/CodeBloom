@@ -1,0 +1,106 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rewards — CodeBloom</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">CodeBloom <span class="sidebar-logo-dot"></span></div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Menu</div>
+        <a href="dashboard.html" class="nav-item ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="editor.html" class="nav-item ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Editor
+        </a>
+        <a href="notebook.html" class="nav-item ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Notebook
+        </a>
+        <a href="streak.html" class="nav-item ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Streak
+        </a>
+        <a href="rewards.html" class="nav-item active">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          Rewards
+        </a>
+        <a href="settings.html" class="nav-item ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </a>
+      </nav>
+      <button class="logout-btn" onclick="logout()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Logout
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <div class="topbar">
+        <div><h1 class="topbar-title">Rewards</h1><p class="topbar-sub">Earn badges by coding consistently</p></div>
+        <div class="topbar-right">
+          <div class="streak-badge"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> <span id="streak-count">0</span> day streak</div>
+          <div class="avatar" id="avatar-display">S</div>
+        </div>
+      </div>
+      <div class="section-title">Your Badges</div>
+      <div id="earned-badges" class="earned-badges"><p class="empty-msg">No badges yet. Start coding to earn your first badge!</p></div>
+      <div class="section-title" style="margin-top:28px">All Badges</div>
+      <div class="all-badges-grid" id="all-badges-grid"></div>
+      <div class="section-title" style="margin-top:28px">Your Stats</div>
+      <div class="stats-showcase">
+        <div class="showcase-card"><div class="showcase-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3 id="show-streak">0</h3><p>Day Streak</p></div>
+        <div class="showcase-card"><div class="showcase-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h3 id="show-lines">0</h3><p>Lines Coded</p></div>
+        <div class="showcase-card"><div class="showcase-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><h3 id="show-badges">0</h3><p>Badges Earned</p></div>
+        <div class="showcase-card"><div class="showcase-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><h3 id="show-notes">0</h3><p>Notebook Entries</p></div>
+      </div>
+    </main>
+  </div>
+  <script>
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!token || !user) window.location = "login.html";
+    document.getElementById("avatar-display").textContent = user.username.charAt(0).toUpperCase();
+    document.getElementById("streak-count").textContent = user.streak || 0;
+    document.getElementById("show-streak").textContent = user.streak || 0;
+    document.getElementById("show-lines").textContent = user.totalLines || 0;
+    const notes = JSON.parse(localStorage.getItem("notes_"+user.id)) || [];
+    document.getElementById("show-notes").textContent = notes.length;
+    const allBadges = [
+      {icon:"&#9917;",title:"7 Day Streak",desc:"Code for 7 days in a row",check:()=>(user.streak||0)>=7},
+      {icon:"&#127775;",title:"30 Day Streak",desc:"Code for 30 days in a row",check:()=>(user.streak||0)>=30},
+      {icon:"&#128081;",title:"100 Day Streak",desc:"Code for 100 days in a row",check:()=>(user.streak||0)>=100},
+      {icon:"&#128142;",title:"365 Day Streak",desc:"Code every day for a year",check:()=>(user.streak||0)>=365},
+      {icon:"&#9000;",title:"1K Lines",desc:"Write 1000 total lines of code",check:()=>(user.totalLines||0)>=1000},
+      {icon:"&#128640;",title:"5K Lines",desc:"Write 5000 total lines of code",check:()=>(user.totalLines||0)>=5000},
+      {icon:"&#128214;",title:"First Note",desc:"Add your first notebook entry",check:()=>notes.length>=1},
+      {icon:"&#128218;",title:"Note Taker",desc:"Write 10 notebook entries",check:()=>notes.length>=10},
+      {icon:"&#127800;",title:"Early Bloomer",desc:"Join CodeBloom",check:()=>true},
+    ];
+    const earned = allBadges.filter(b=>b.check());
+    document.getElementById("show-badges").textContent = earned.length;
+    const earnedDiv = document.getElementById("earned-badges");
+    if (earned.length > 0) {
+      earnedDiv.innerHTML = earned.map(b=>`<div class="earned-badge-card"><div class="earned-badge-icon" style="font-size:24px">${b.icon}</div><h4>${b.title}</h4><p>${b.desc}</p></div>`).join("");
+    }
+    document.getElementById("all-badges-grid").innerHTML = allBadges.map(b=>{
+      const isEarned = b.check();
+      return `<div class="badge-grid-card ${isEarned?"badge-earned":"badge-locked"}"><div class="badge-grid-icon" style="font-size:22px">${isEarned?b.icon:"&#128274;"}</div><h4>${b.title}</h4><p>${b.desc}</p><span class="badge-status ${isEarned?"status-earned":"status-locked"}">${isEarned?"Earned":"Locked"}</span></div>`;
+    }).join("");
+
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location = "login.html";
+    }
+  </script>
+</body></html>

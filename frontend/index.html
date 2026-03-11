@@ -1,0 +1,155 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeBloom</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo">CodeBloom <span class="nav-logo-dot"></span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="login.html" class="btn-outline">Login</a>
+      <a href="signup.html" class="btn-filled">Sign Up</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Build your coding habit daily
+      </div>
+      <h1>Code every day.<br><span class="highlight">Grow every week.</span></h1>
+      <p>CodeBloom is a VS Code-style coding platform that tracks your streak, stores your problem-solving approaches, and rewards you for showing up every single day.</p>
+      <div class="hero-buttons">
+        <a href="signup.html" class="btn-filled">Start Coding Free</a>
+        <a href="#features" class="btn-outline">See Features</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="editor-preview">
+        <div class="editor-topbar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="editor-filename">solution.py</span>
+        </div>
+        <div class="editor-body">
+          <pre><code><span class="code-comment"># Two Sum — O(n) solution</span>
+<span class="code-keyword">def</span> <span class="code-fn">twoSum</span>(nums, target):
+    seen = {}
+    <span class="code-keyword">for</span> i, num <span class="code-keyword">in</span> enumerate(nums):
+        diff = target - num
+        <span class="code-keyword">if</span> diff <span class="code-keyword">in</span> seen:
+            <span class="code-keyword">return</span> [seen[diff], i]
+        seen[num] = i</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="section-header">
+      <div class="section-label">Features</div>
+      <h2>Everything you need to grow</h2>
+      <p>A complete coding habit system — editor, streaks, notebook, rewards, and analytics all in one place.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>VS Code Editor</h3>
+        <p>Write code in a real Monaco editor with syntax highlighting, autocomplete, and multiple languages.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Daily Streak</h3>
+        <p>Build consistency. Your streak grows only when you write meaningful code — not random typing.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <h3>Coding Notebook</h3>
+        <p>Document your approaches, time complexity, and ideas for every problem you solve.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <h3>Rewards & Badges</h3>
+        <p>Earn badges for streaks, problems solved, and milestones. Show them off on your profile.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h3>Analytics</h3>
+        <p>Track your progress with charts — coding time, problems solved, and language usage.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <h3>Problem Sets</h3>
+        <p>Solve curated DSA problems with difficulty tags — arrays, DP, graphs, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>Why CodeBloom?</h2>
+    <p>Most developers know what to study — they just struggle with consistency. CodeBloom gamifies your daily practice so showing up feels rewarding, not like a chore.</p>
+  </section>
+
+  <section class="newsletter">
+    <h2>Stay in the loop</h2>
+    <p>Get weekly coding challenges, interview tips, and algorithm breakdowns.</p>
+    <div class="newsletter-form">
+      <input type="email" id="newsletter-email" placeholder="Enter your email">
+      <button onclick="subscribeNewsletter()">Subscribe</button>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-form">
+      <input type="text" id="contact-name" placeholder="Your Name">
+      <input type="email" id="contact-email" placeholder="Your Email">
+      <textarea id="contact-message" placeholder="Your Message" rows="4"></textarea>
+      <button onclick="sendMessage()">Send Message</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>CodeBloom</h3>
+        <p>Build your coding habit, one day at a time.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Follow Us</h4>
+        <a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">Twitter</a><a href="#">Discord</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 CodeBloom. Made with care for developers.</p></div>
+  </footer>
+
+  <script>
+    function subscribeNewsletter() {
+      const email = document.getElementById("newsletter-email").value;
+      if (!email) return alert("Please enter your email");
+      alert("Subscribed! Welcome to CodeBloom.");
+    }
+    async function sendMessage() {
+  const name = document.getElementById("contact-name").value;
+  const email = document.getElementById("contact-email").value;
+  const message = document.getElementById("contact-message").value;
+  if (!name || !email || !message) return alert("Please fill all fields");
+
+  await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, message })
+  });
+
+  alert("Message sent! I'll get back to you soon.");
+}
+  </script>
+</body>
+</html>
